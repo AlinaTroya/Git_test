@@ -2007,7 +2007,7 @@ textarea.form-control-lg {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  vertical-align: middle;
+  /*vertical-align: middle;*/
   background-color: #fff;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -3949,7 +3949,7 @@ fieldset:disabled .btn {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: lightyellow;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -6598,7 +6598,7 @@ fieldset:disabled .btn {
   color: #dc3545 !important;
 }
 .text-light {
-  color: #f8f9fa !important;
+  color: #afe09c !important;
 }
 .text-dark {
   color: #212529 !important;
@@ -6690,6 +6690,10 @@ fieldset:disabled .btn {
 }
 .font-monospace {
   font-family: var(--bs-font-monospace) !important;
+}
+
+.font-weight-bold{
+  font-weight: bold;
 }
 .user-select-all {
   -webkit-user-select: all !important;
@@ -7252,6 +7256,10 @@ fieldset:disabled .btn {
   }
 }
 @media (min-width: 768px) {
+  .text-md-right {
+    text-align: right;
+}
+
   .float-md-start {
     float: left !important;
   }
@@ -7748,6 +7756,12 @@ fieldset:disabled .btn {
   }
 }
 @media (min-width: 992px) {
+  
+.text-lg-right {
+  text-align: right;
+}
+
+
   .float-lg-start {
     float: left !important;
   }
@@ -8244,6 +8258,9 @@ fieldset:disabled .btn {
   }
 }
 @media (min-width: 1200px) {
+  .text-xl-right {
+    text-align: right;
+}
   .float-xl-start {
     float: left !important;
   }

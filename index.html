@@ -4,19 +4,69 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
 
+    <script>
+        var Theme_number = 1;
+        var Default_theme = 1;
+        //var Ext = "less";
+        var Ext = "css";
+    
+        function getUrl(num) {
+            return Ext + "/" + 'less' + ".style" + num + ".css";
+        }
+    
+        function getThemeNumber() {
+            Theme_number = Theme_number % 2 === 0 ? 1 : 2;
+            console.log(Theme_number);
+            return Theme_number;
+        }
+    
+        function initialize() {
+            var link = document.createElement("link");
+            link.setAttribute("rel", "stylesheet");
+            link.setAttribute("href", getUrl(Default_theme));
+            document.head.appendChild(link);
+        }
+    
+        function initListener() {
+            document
+                .querySelector(".mynav__theme")
+                .addEventListener("click", changeTheme);
+        }
+    
+        function changeTheme() {
+            document.head
+                .querySelector("link")
+                .setAttribute("href", getUrl(getThemeNumber()));
+        }
+    
+        initialize();
+    
+        window.addEventListener("load", initListener);
+    </script>
     <!-- Bootstrap CSS -->
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+   <!--- <link rel="stylesheet/less" type="text/css" href="less/less.style1.less">-->
+    <!--<link rel="stylesheet/less" type="text/css" href="less/less.style2.less">-->
+   <!--<link rel="stylesheet" href="css/css.style1.css">-->
+   <!--<link rel="stylesheet" href="css/css.style2.css">-->
+   <!--<link rel="stylesheet" href="css/less.style1.css">-->
+   <!--<link rel="stylesheet" href="css/less.style2.css">-->
+   
+
+
 
     <script src="main.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="less.js" type="text/javascript"></script>
 
-    <title>New title!</title>
+    <title>Hello, world!</title>
   </head>
   <body>
     <!-- Optional JavaScript -->
@@ -45,13 +95,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" id="testing-tab" data-toggle="tab" href="#testing" role="tab" aria-controls="testing" aria-selected="false">Тестирование</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" id="less-tab" data-toggle="tab" href="#less" role="tab" aria-controls="less" aria-selected="false">LESS</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link  text-light" data-toggle="modal" data-target="#exampleTab" >Контакты</a>
+                        </li>
                         
                     </ul>
     
                     <ul class="nav  ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link  text-light" data-toggle="modal" data-target="#exampleTab" >Контакты</a>
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="#" class="nav-link  text-light" data-toggle="modal" data-target="#exampleModal">Вход</a>
                         </li>
@@ -70,7 +125,7 @@
                             <div class="single-post">
                                 <h3 class="post-category">Front end</h3>
                                 <h2 class="post-title"><a href="#">Bootstrap</a></h2>
-                                <p>Bootstrap (также известен как Twitter Bootstrap) — свободный набор инструментов для создания сайтов и веб-приложений. Включает в себя HTML- и CSS-шаблоны оформления для типографики, веб-форм, кнопок, меток, блоков навигации и прочих компонентов веб-интерфейса, включая JavaScript-расширения.
+                                <p class="boot_font">Bootstrap (также известен как Twitter Bootstrap) — свободный набор инструментов для создания сайтов и веб-приложений. Включает в себя HTML- и CSS-шаблоны оформления для типографики, веб-форм, кнопок, меток, блоков навигации и прочих компонентов веб-интерфейса, включая JavaScript-расширения.
                                         Bootstrap использует современные наработки в области CSS и HTML, поэтому необходимо быть внимательным при поддержке старых браузеров.</p>
                             </div>
                         </div>
@@ -197,7 +252,7 @@
             <div class="tab-pane" id="testing" role="tabpanel" aria-labelledby="testing-tab">
                 <div class="container" >
                     <div class="box">
-                        <div class="item col-lg-6 col-md-4 col-sm-5">
+                        <div class="item bg-danger text-secondary text-center col-lg-6 col-md-4 col-sm-5">
                             
                                 HTML (HyperText Markup Language — «язык гипертекстовой разметки») — самый базовый строительный блок Веба. 
                                 Он определяет содержание и структуру веб-контента. Другие технологии, помимо HTML, обычно используются для 
@@ -207,21 +262,242 @@
                                 и связывая его со страницами, созданными другими людьми, вы становитесь активным участником Всемирной паутины.
                               
                         </div>
-                        <div class="item col-lg-4 col-md-6 col-sm-5">
+                        <div class="item bg-warning text-danger text-lowercase font-weight-bold text-md-right col-lg-4 col-md-6 col-sm-5">
                             
                                 CSS (Cascading Style Sheets) — это код, который вы используете для стилизации вашей веб-страницы. 
                                 Основы CSS помогут вам понять, что вам нужно для начала работы. Мы ответим на такие вопросы как: Как сделать 
                                 мой текст черным или красным? Как сделать так, чтобы контент появлялся в определенном месте на экране? 
                                 Как украсить мою веб-страницу с помощью фоновых изображений и цветов?
-                              
-
+                            
                         </div>
                       
-                      
-    
                     </div>
                   </div>
+                  <br>
+                  <section class="border p-4 text-center mb-4">
+                    <div class="table-responsive-md">
+                      <table class="table table-striped mytab">
+                        <caption  class="text-secondary">Тестовая таблица 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-date-fill" viewBox="0 0 16 16">
+                            <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zm5.402 9.746c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.543 1.2 1.144 1.2z"/>
+                            <path d="M16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-6.664-1.21c-1.11 0-1.656-.767-1.703-1.407h.683c.043.37.387.82 1.051.82.844 0 1.301-.848 1.305-2.164h-.027c-.153.414-.637.79-1.383.79-.852 0-1.676-.61-1.676-1.77 0-1.137.871-1.809 1.797-1.809 1.172 0 1.953.734 1.953 2.668 0 1.805-.742 2.871-2 2.871zm-2.89-5.435v5.332H5.77V8.079h-.012c-.29.156-.883.52-1.258.777V8.16a12.6 12.6 0 0 1 1.313-.805h.632z"/>
+                          </svg></caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">Time</th>
+                            <th scope="col">Monday</th>
+                            <th scope="col">Tuesday</th>
+                            <th scope="col">Wednesday</th>
+                            <th scope="col">Thursday</th>
+                            <th scope="col">Friday</th>
+                            <th scope="col">Saturday</th>
+                            <th scope="col">Sunday</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Breakfast</th>
+                            <td>Omelet</td>
+                            <td>Scrambled eggs</td>
+                            <td>Sandwich</td>
+                            <td>Salad</td>
+                            <td>Cheesecakes</td>
+                            <td>Pancakes</td>
+                            <td>Oatmeal</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Dinner</th>
+                            <td>Soup</td>
+                            <td>cream-soup</td>
+                            <td>Stewed fish</td>
+                            <td>Steak</td>
+                            <td>Lasagna</td>
+                            <td>Meet pie</td>
+                            <td>Onion soup</td>
+                            
+                          </tr>
+                          <tr>
+                            <th scope="row">Supper</th>
+                            <td>Pasta</td>
+                            <td>Chicken</td>
+                            <td>Fish</td>
+                            <td>Seafood</td>
+                            <td>Stewed potato</td>
+                            <td>Salad</td>
+                            <td>Beef</td>
+                            
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+
+                  <br>
+                  <div id="accordion">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Рython
+                          </button>
+                        </h5>
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            Python — это высокоуровневый язык программирования общего назначения, который используется в том числе и 
+                            для разработки веб-приложений. Язык ориентирован на повышение производительности разработчика и читаемости кода.
+                            Python поддерживает несколько парадигм программирования: структурное, объектно-ориентированное, 
+                            функциональное, императивное и аспектно-ориентированное. В языке присутствет динамическая типизация, автоматическое 
+                            управление памятью, полная интроспекция, механизм обработки исключений, поддержка многопоточных вычислений и удобные 
+                            высокоуровневые структуры данных. Программный код на Python организовывается в функции и классы, которые могут 
+                            объединяться в модули, а они в свою очередь могут быть объединены в пакеты. Python обычно используется как 
+                            интерпретируемый, но может быть скомпилирован в байт-код Java и в MSIL (в рамках платфоры .NET).
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Java
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            Java представляет собой язык программирования и платформу вычислений, которая была впервые выпущена Sun Microsystems
+                             в 1995 г. Существует множество приложений и веб-сайтов, которые не работают при отсутствии установленной Java, 
+                             и с каждым днем число таких веб-сайтов и приложений увеличивается. Java отличается быстротой, высоким уровнем 
+                             защиты и надежностью. От портативных компьютеров до центров данных, от игровых консолей до суперкомпьютеров, 
+                             используемых для научных разработок, от сотовых телефонов до сети Интернет — Java повсюду!
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Ruby
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            Ruby — язык программирования, который был представлен в 1995 году разработчиком Юкихиро Мацумото, 
+                            также известным под ником Matz. Вот характеристики Ruby:
+                            <ul>
+                                <li>высокоуровневый — удобный для разработчиков, с сильной абстракцией и использованием 
+                                    конструкций натурального или человеческого языка;
+                                </li>
+                                <li>
+                                    динамичный — типы данных определяются на этапе выполнения программы, это увеличивает скорость разработки;
+                                </li>
+                                <li>
+                                    интерпретируемый — код на Ruby обрабатывается интерпретатором в момент выполнения без предварительной компиляции, 
+                                    это обеспечивает независимость от платформ и уменьшает размер исполняемых программ;
+                                 </li>
+                                 <li>
+                                    язык программирования общего назначения — в отличие от предметно-ориентированных, языки программирования общего 
+                                    назначения не создаются для применения в специфичных областях.
+                                 </li>
+                            </ul>
+
+                            
+                            
+                            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
             </div>
+            <br>
+
+            <div class="tab-pane" id="less" role="tabpanel" aria-labelledby="less-tab">
+            <div class="wrapper">
+                <nav class="mynav">
+                    <button class="mynav__theme">Change theme</button>
+                    <ul class="mynav__menu">
+                        <li class="mynav__item"><a href="#" class="mynav__link">Home</a></li>
+                        <li class="mynav__item"><a href="#" class="mynav__link">About</a></li>
+                        <li class="mynav__item"><a href="#" class="mynav__link">Items</a></li>
+                        <li class="mynav__item"><a href="#" class="mynav__link">Contact</a></li>
+                    </ul>
+                </nav>
+                            
+                <section class="main">
+                    <div class="main__content">
+                        <div class="main__tile main__tile--danger">
+                            <div class="main__header">Product 1</div>
+                            <ul class="main__features">
+                                <li class="main__item">Feature 1<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 2<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 3<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 4</li>
+                                <li class="main__item">Feature 5</li>
+                            </ul>
+                                            
+                            <div class="main__footer">
+                                <button class="main__button main__button--danger">Click on me!</button>
+                            </div>
+                        </div>
+                                        
+                        <div class="main__tile main__tile--warning">
+                            <div class="main__header">Product 2</div>
+                            <ul class="main__features">
+                                <li class="main__item">Feature 1<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 2</li>
+                                <li class="main__item">Feature 3<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 4<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 5</li>
+                            </ul>
+                                            
+                            <div class="main__footer">
+                                <button class="main__button main__button--warning">Click on me!</button>
+                            </div>
+                        </div>
+                                        
+                        <div class="main__tile main__tile--primary">
+                            <div class="main__header">Product 3</div>
+                            <ul class="main__features">
+                                <li class="main__item">Feature 1</li>
+                                <li class="main__item">Feature 2<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 3<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 4<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 5</li>
+                            </ul>
+                                            
+                            <div class="main__footer">
+                                <button class="main__button main__button--primary">Click on me!</button>
+                            </div>
+                        </div>
+                                        
+                        <div class="main__tile main__tile--success">
+                            <div class="main__header">Product 4</div>
+                            <ul class="main__features">
+                                <li class="main__item">Feature 1<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 2</li>
+                                <li class="main__item">Feature 3</li>
+                                <li class="main__item">Feature 4<span class="main__plus">+</span></li>
+                                <li class="main__item">Feature 5<span class="main__plus">+</span></li>
+                            </ul>
+                                            
+                            <div class="main__footer">
+                                <button class="main__button main__button--success">Click on me!</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            </div>
+            
+
+            
+
+          
+            
            
             
     </div>
@@ -309,9 +585,9 @@
 </div>
 <div class="footer-right">
 <span>Follow</span>
-<a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-<a href="#"><i class="fab fa-twitter"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="https://www.facebook.com/profile.php?id=100005976168823" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="https://twitter.com/malaya1304" target="_blank"><i class="fab fa-twitter"></i></a>
+<a href="https://www.instagram.com/alinatroyanovskaya/?hl=ru" target="_blank"><i class="fab fa-instagram"></i></a>
 </div>
 </div>
 </div>
